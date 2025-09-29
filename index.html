@@ -14,37 +14,73 @@
       text-align: center;
     }
 
+    /* Блок с картинкой */
     .hero {
       position: relative;
       width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
+      height: 60vh; /* 60% от высоты экрана */
+      background: url('plane.jpg') no-repeat center center;
+      background-size: cover; /* адаптивное масштабирование */
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
-    .hero img {
-      width: 100%;
-      display: block;
-    }
-
+    /* Текст с промокодом */
     .promo-text {
-      position: absolute;
-      top: 20%;
-      left: 10%;
-      color: #fff;
-      font-size: 18px;
-      font-weight: 600;
       background: rgba(0, 0, 0, 0.5);
       padding: 10px 15px;
       border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: left;
     }
 
     .promo-code {
-      font-size: 22px;
+      font-size: 20px;
       color: #ff4d4d;
       font-weight: bold;
-      margin-top: 5px;
     }
 
+    /* Меню (три точки) */
+    .menu {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+
+    .dots {
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 35px;
+      background: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      min-width: 180px;
+      text-align: left;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 10px 14px;
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+    }
+
+    .dropdown a:hover {
+      background: #2b2b2b;
+    }
+
+    /* Контейнер кнопок */
     .container {
       max-width: 420px;
       margin: 20px auto;
@@ -78,12 +114,20 @@
 </head>
 <body>
 
-  <!-- Картинка с самолётом и промокод -->
+  <!-- Блок с картинкой -->
   <div class="hero">
-    <img src="plane.jpg" alt="Airplane">
     <div class="promo-text">
-      Вводите при регистрации нового аккаунта:  
-      <div class="promo-code">X5PLUS</div>
+      Вводите при регистрации нового аккаунта:<br>
+      <span class="promo-code">X5PLUS</span>
+    </div>
+
+    <!-- Три точки -->
+    <div class="menu">
+      <div class="dots" onclick="toggleMenu()">⋮</div>
+      <div class="dropdown" id="menuDropdown">
+        <a href="#">📱 Открыть в браузере (TikTok)</a>
+        <a href="#">🎁 Промокод: X5PLUS</a>
+      </div>
     </div>
   </div>
 
@@ -93,6 +137,13 @@
     <a href="https://t.me/Turkish_avia" class="btn telegram">Telegram канал</a>
     <a href="https://1wlshx.life/casino/list?open=register&p=p6u0" class="btn link">👉 Зарегистрироваться</a>
   </div>
+
+  <script>
+    function toggleMenu() {
+      let menu = document.getElementById("menuDropdown");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+  </script>
 
 </body>
 </html>
