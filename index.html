@@ -18,18 +18,35 @@
     .hero {
       position: relative;
       width: 100%;
-      height: 60vh; /* 60% от высоты экрана */
-      background: url('plane.jpg') no-repeat center center;
-      background-size: cover; /* адаптивное масштабирование */
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
-      padding: 20px;
-      box-sizing: border-box;
+      max-width: 900px;
+      margin: 0 auto;
+      height: 280px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Фейд снизу */
+    .fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%);
     }
 
     /* Текст с промокодом */
     .promo-text {
+      position: absolute;
+      top: 15px;
+      left: 15px;
       background: rgba(0, 0, 0, 0.5);
       padding: 10px 15px;
       border-radius: 10px;
@@ -47,30 +64,34 @@
     /* Меню (три точки) */
     .menu {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 10px;
+      right: 10px;
     }
 
     .dots {
-      font-size: 28px;
+      font-size: 26px;
       cursor: pointer;
+      background: rgba(0,0,0,0.5);
+      padding: 5px 10px;
+      border-radius: 10px;
     }
 
     .dropdown {
       display: none;
       position: absolute;
       right: 0;
-      top: 35px;
+      top: 40px;
       background: #1e1e1e;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      min-width: 180px;
+      min-width: 200px;
       text-align: left;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     }
 
     .dropdown a {
       display: block;
-      padding: 10px 14px;
+      padding: 12px 16px;
       text-decoration: none;
       color: white;
       font-size: 14px;
@@ -83,24 +104,25 @@
     /* Контейнер кнопок */
     .container {
       max-width: 420px;
-      margin: 20px auto;
+      margin: 25px auto;
       padding: 10px;
     }
 
     .btn {
       display: block;
       text-decoration: none;
-      background: #1e1e1e;
       color: white;
       font-weight: 600;
-      border-radius: 12px;
-      padding: 14px;
-      margin: 12px 0;
+      border-radius: 25px; /* более круглые */
+      padding: 16px;
+      margin: 16px 0;
+      font-size: 16px;
       transition: 0.2s;
     }
 
     .btn:hover {
-      background: #2b2b2b;
+      opacity: 0.9;
+      transform: scale(1.03);
     }
 
     .telegram {
@@ -116,6 +138,10 @@
 
   <!-- Блок с картинкой -->
   <div class="hero">
+    <img src="plane.jpg" alt="Airplane">
+    <div class="fade"></div>
+
+    <!-- Текст с промокодом -->
     <div class="promo-text">
       Вводите при регистрации нового аккаунта:<br>
       <span class="promo-code">X5PLUS</span>
@@ -143,6 +169,15 @@
       let menu = document.getElementById("menuDropdown");
       menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
+
+    // Закрытие меню при клике вне его
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("menuDropdown");
+      const dots = document.querySelector(".dots");
+      if (!menu.contains(event.target) && !dots.contains(event.target)) {
+        menu.style.display = "none";
+      }
+    });
   </script>
 
 </body>
