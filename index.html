@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Bio</title>
+  <title>Aviagame Promo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -14,43 +14,52 @@
       text-align: center;
     }
 
+    .hero {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero img {
+      width: 100%;
+      display: block;
+    }
+
+    .promo-text {
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 15px;
+      border-radius: 10px;
+    }
+
+    .promo-code {
+      font-size: 22px;
+      color: #ff4d4d;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
     .container {
       max-width: 420px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .logo {
-      margin-top: 20px;
-    }
-
-    .logo img {
-      width: 120px;
-      border-radius: 50%;
-    }
-
-    h1 {
-      font-size: 22px;
-      margin: 15px 0 5px;
-    }
-
-    p {
-      font-size: 14px;
-      color: #aaa;
-      margin: 0 0 25px;
+      margin: 20px auto;
+      padding: 10px;
     }
 
     .btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: block;
+      text-decoration: none;
       background: #1e1e1e;
       color: white;
-      text-decoration: none;
       font-weight: 600;
       border-radius: 12px;
-      padding: 14px 18px;
-      margin: 10px 0;
+      padding: 14px;
+      margin: 12px 0;
       transition: 0.2s;
     }
 
@@ -58,76 +67,32 @@
       background: #2b2b2b;
     }
 
-    .btn span {
-      flex: 1;
-      text-align: center;
-    }
-
-    .promo {
-      margin: 25px 0;
-      font-size: 16px;
-    }
-
-    .promo-code {
-      font-weight: bold;
-      color: #ff4d4d;
-    }
-
-    .whatsapp {
-      background: #25D366;
-    }
-
     .telegram {
       background: #229ED9;
     }
 
-    .btn img {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
+    .link {
+      background: #25D366;
     }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <!-- Логотип -->
-    <div class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="Logo">
+  <!-- Картинка с самолётом и промокод -->
+  <div class="hero">
+    <img src="plane.jpg" alt="Airplane">
+    <div class="promo-text">
+      Вводите при регистрации нового аккаунта:  
+      <div class="promo-code">X5PLUS</div>
     </div>
-
-    <h1>🚀 My Project</h1>
-    <p>Добро пожаловать! Нажми на кнопку ниже 👇</p>
-
-    <!-- Кнопки -->
-    <a href="https://example.com" class="btn">
-      <img src="https://img.icons8.com/color/48/airplane.png" alt="">
-      <span>Play My Game</span>
-      <span>›</span>
-    </a>
-
-    <a href="https://example.com" class="btn">
-      <img src="https://img.icons8.com/color/48/piano.png" alt="">
-      <span>New Game: Piano</span>
-      <span>›</span>
-    </a>
-
-    <!-- Промокод -->
-    <div class="promo">
-      🎁 Промокод: <span class="promo-code">X5PLUS</span><br>
-      Используй при регистрации для бонусов
-    </div>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/79999999999" class="btn whatsapp">
-      <span>Support WhatsApp</span>
-    </a>
-
-    <!-- Telegram -->
-    <a href="https://t.me/yourchannel" class="btn telegram">
-      <span>Telegram Channel</span>
-    </a>
-
   </div>
+
+  <!-- Кнопки -->
+  <div class="container">
+    <a href="http://t.me/Demir_support" class="btn telegram">Мой Telegram</a>
+    <a href="https://t.me/Turkish_avia" class="btn telegram">Telegram канал</a>
+    <a href="https://1wlshx.life/casino/list?open=register&p=p6u0" class="btn link">👉 Зарегистрироваться</a>
+  </div>
+
 </body>
 </html>
