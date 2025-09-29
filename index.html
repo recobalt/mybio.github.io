@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aviagame Promo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -84,7 +85,7 @@
       background: #1e1e1e;
       border-radius: 12px;
       overflow: hidden;
-      min-width: 200px;
+      min-width: 220px;
       text-align: left;
       box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     }
@@ -109,28 +110,43 @@
     }
 
     .btn {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       text-decoration: none;
       color: white;
       font-weight: 600;
-      border-radius: 25px; /* более круглые */
+      border-radius: 25px;
       padding: 16px;
       margin: 16px 0;
       font-size: 16px;
       transition: 0.2s;
+      background: #1c1c1c; /* тёмные кнопки */
+      border: 1px solid #333;
     }
 
     .btn:hover {
-      opacity: 0.9;
+      background: #2b2b2b;
       transform: scale(1.03);
     }
 
-    .telegram {
-      background: #229ED9;
+    .info-text {
+      margin: 25px 0;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #ddd;
     }
 
-    .link {
-      background: #25D366;
+    /* Подсказка внизу */
+    .footer-note {
+      font-size: 14px;
+      color: #ff4444;
+      padding: 20px;
+      margin-top: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
@@ -151,17 +167,29 @@
     <div class="menu">
       <div class="dots" onclick="toggleMenu()">⋮</div>
       <div class="dropdown" id="menuDropdown">
-        <a href="#">📱 Открыть в браузере (TikTok)</a>
-        <a href="#">🎁 Промокод: X5PLUS</a>
+        <a href="#">📱 Ouvrir dans le navigateur (TikTok)</a>
+        <a href="#">🎁 Promocode: X5PLUS</a>
       </div>
     </div>
   </div>
 
   <!-- Кнопки -->
   <div class="container">
-    <a href="http://t.me/Demir_support" class="btn telegram">Мой Telegram</a>
-    <a href="https://t.me/Turkish_avia" class="btn telegram">Telegram канал</a>
-    <a href="https://1wlshx.life/casino/list?open=register&p=p6u0" class="btn link">👉 Зарегистрироваться</a>
+    <a href="http://t.me/Demir_support" class="btn"><i class="fab fa-telegram"></i> Мой Telegram</a>
+    <a href="https://t.me/Turkish_avia" class="btn"><i class="fab fa-telegram"></i> Telegram канал</a>
+
+    <!-- Текст между кнопками -->
+    <div class="info-text">
+      Yeni bir hesap açmayı unutma, çünkü yeni başlayanlar daha fazla şansa sahip <br>
+      ve promosyon kodunu gir: <b>TRK5</b>
+    </div>
+
+    <a href="https://1wlshx.life/casino/list?open=register&p=p6u0" class="btn"><i class="fa fa-user-plus"></i> 👉 Зарегистрироваться</a>
+  </div>
+
+  <!-- Подсказка внизу -->
+  <div class="footer-note">
+    ❗️TikTok'ta bir bağlantıyı açmak istiyorsanız, sağ üst köşedeki üç noktaya tıklamanız ve ardından “tarayıcıda aç” seçeneğini seçmeniz gerekir.❗️
   </div>
 
   <script>
