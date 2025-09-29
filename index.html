@@ -15,13 +15,13 @@
       text-align: center;
     }
 
-    /* Блок с картинкой */
+    /* Фото вверху */
     .hero {
       position: relative;
       width: 100%;
-      max-width: 900px;
+      max-width: 420px; /* ширина как у кнопок */
       margin: 0 auto;
-      height: 280px;
+      height: 180px;
       border-radius: 20px;
       overflow: hidden;
     }
@@ -33,181 +33,154 @@
       display: block;
     }
 
-    /* Фейд снизу */
+    /* Фейд затемнения */
     .fade {
       position: absolute;
-      bottom: 0;
+      bottom: -50px; /* ниже, чтобы заходил на кнопки */
       left: 0;
       width: 100%;
-      height: 80px;
+      height: 150px;
       background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%);
     }
 
-    /* Текст с промокодом */
+    /* Промокод */
     .promo-text {
       position: absolute;
-      top: 15px;
-      left: 15px;
+      top: 10px;
+      left: 10px;
       background: rgba(0, 0, 0, 0.5);
-      padding: 10px 15px;
+      padding: 8px 12px;
       border-radius: 10px;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
       text-align: left;
     }
 
     .promo-code {
-      font-size: 20px;
+      font-size: 18px;
       color: #ff4d4d;
       font-weight: bold;
     }
 
-    /* Меню (три точки) */
-    .menu {
-      position: absolute;
-      top: 10px;
-      right: 10px;
+    /* Аватар */
+    .avatar {
+      margin-top: -40px;
     }
 
-    .dots {
-      font-size: 26px;
-      cursor: pointer;
-      background: rgba(0,0,0,0.5);
-      padding: 5px 10px;
-      border-radius: 10px;
+    .avatar img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      object-fit: cover;
     }
 
-    .dropdown {
-      display: none;
-      position: absolute;
-      right: 0;
-      top: 40px;
-      background: #1e1e1e;
-      border-radius: 12px;
-      overflow: hidden;
-      min-width: 220px;
-      text-align: left;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    .name {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 10px 0;
     }
 
-    .dropdown a {
-      display: block;
-      padding: 12px 16px;
-      text-decoration: none;
-      color: white;
-      font-size: 14px;
-    }
-
-    .dropdown a:hover {
-      background: #2b2b2b;
+    /* TikTok предупреждение */
+    .tiktok-note {
+      font-size: 13px;
+      color: #ff4444;
+      padding: 0 20px;
+      margin-bottom: 20px;
+      line-height: 1.5;
     }
 
     /* Контейнер кнопок */
     .container {
       max-width: 420px;
-      margin: 25px auto;
+      margin: 10px auto;
       padding: 10px;
     }
 
     .btn {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
       color: white;
       font-weight: 600;
-      border-radius: 25px;
+      border-radius: 28px;
       padding: 16px;
-      margin: 16px 0;
+      margin: 14px 0;
       font-size: 16px;
       transition: 0.2s;
       background: #1c1c1c; /* тёмные кнопки */
       border: 1px solid #333;
+      justify-content: flex-start; /* иконка слева */
     }
+
+    .btn i {
+      font-size: 20px;
+      width: 24px;
+      text-align: center;
+    }
+
+    /* Цветные иконки */
+    .telegram-icon { color: #24A1DE; }
+    .user-icon { color: #4CAF50; }
 
     .btn:hover {
       background: #2b2b2b;
       transform: scale(1.03);
     }
 
+    /* Текст между кнопками */
     .info-text {
-      margin: 25px 0;
+      margin: 20px 0;
       font-size: 15px;
       line-height: 1.5;
       color: #ddd;
-    }
-
-    /* Подсказка внизу */
-    .footer-note {
-      font-size: 14px;
-      color: #ff4444;
-      padding: 20px;
-      margin-top: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
     }
   </style>
 </head>
 <body>
 
-  <!-- Блок с картинкой -->
+  <!-- Фото -->
   <div class="hero">
     <img src="plane.jpg" alt="Airplane">
     <div class="fade"></div>
 
-    <!-- Текст с промокодом -->
+    <!-- Промокод -->
     <div class="promo-text">
       Вводите при регистрации нового аккаунта:<br>
       <span class="promo-code">X5PLUS</span>
     </div>
+  </div>
 
-    <!-- Три точки -->
-    <div class="menu">
-      <div class="dots" onclick="toggleMenu()">⋮</div>
-      <div class="dropdown" id="menuDropdown">
-        <a href="#">📱 Ouvrir dans le navigateur (TikTok)</a>
-        <a href="#">🎁 Promocode: X5PLUS</a>
-      </div>
-    </div>
+  <!-- Аватар -->
+  <div class="avatar">
+    <img src="avatar.jpg" alt="Avatar">
+  </div>
+  <div class="name">My Name</div>
+
+  <!-- TikTok предупреждение -->
+  <div class="tiktok-note">
+    ❗️TikTok'ta bir bağlantıyı açmak istiyorsanız, sağ üst köşedeki üç noktaya tıklamanız ve ardından “tarayıcıda aç” seçeneğini seçmeniz gerekir.❗️
   </div>
 
   <!-- Кнопки -->
   <div class="container">
-    <a href="http://t.me/Demir_support" class="btn"><i class="fab fa-telegram"></i> Мой Telegram</a>
-    <a href="https://t.me/Turkish_avia" class="btn"><i class="fab fa-telegram"></i> Telegram канал</a>
+    <a href="http://t.me/Demir_support" class="btn">
+      <i class="fab fa-telegram telegram-icon"></i> Мой Telegram
+    </a>
+    <a href="https://t.me/Turkish_avia" class="btn">
+      <i class="fab fa-telegram telegram-icon"></i> Telegram канал
+    </a>
 
-    <!-- Текст между кнопками -->
     <div class="info-text">
       Yeni bir hesap açmayı unutma, çünkü yeni başlayanlar daha fazla şansa sahip <br>
       ve promosyon kodunu gir: <b>TRK5</b>
     </div>
 
-    <a href="https://1wlshx.life/casino/list?open=register&p=p6u0" class="btn"><i class="fa fa-user-plus"></i> 👉 Зарегистрироваться</a>
+    <a href="https://1wlshx.life/casino/list?open=register&p=p6u0" class="btn">
+      <i class="fa fa-user-plus user-icon"></i> 👉 Зарегистрироваться
+    </a>
   </div>
-
-  <!-- Подсказка внизу -->
-  <div class="footer-note">
-    ❗️TikTok'ta bir bağlantıyı açmak istiyorsanız, sağ üst köşedeki üç noktaya tıklamanız ve ardından “tarayıcıda aç” seçeneğini seçmeniz gerekir.❗️
-  </div>
-
-  <script>
-    function toggleMenu() {
-      let menu = document.getElementById("menuDropdown");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
-
-    // Закрытие меню при клике вне его
-    document.addEventListener("click", function(event) {
-      const menu = document.getElementById("menuDropdown");
-      const dots = document.querySelector(".dots");
-      if (!menu.contains(event.target) && !dots.contains(event.target)) {
-        menu.style.display = "none";
-      }
-    });
-  </script>
 
 </body>
 </html>
-
