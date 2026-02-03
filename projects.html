@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Проекты • recobalt</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #05050a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .stars-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      background: radial-gradient(circle at 50% 50%, #0a0a1f 0%, #000 75%);
+    }
+
+    .stars-layer {
+      position: absolute;
+      inset: 0;
+    }
+
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #fff;
+      opacity: 0.6;
+      animation: twinkle 5s infinite alternate ease-in-out;
+    }
+
+    .shooting-star {
+      position: absolute;
+      width: 2px;
+      height: 100px;
+      background: linear-gradient(transparent, rgba(165, 243, 252, 0.9), transparent);
+      transform: rotate(25deg);
+      animation: fall 6s linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.4; transform: scale(0.8); }
+      50% { opacity: 0.95; transform: scale(1.15); }
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-150px) rotate(25deg); opacity: 0; }
+      10% { opacity: 0.8; }
+      100% { transform: translateY(120vh) rotate(25deg); opacity: 0; }
+    }
+
+    .glass {
+      background: rgba(18, 18, 35, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .glow-hover:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px -15px rgba(16,185,129,0.35);
+      border-color: rgba(16,185,129,0.5);
+    }
+
+    #mobile-menu {
+      transition: all 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 3.4rem; line-height: 1.05; }
+      h2 { font-size: 2.4rem; }
+      .text-xl { font-size: 1.125rem; }
+      .p-8 { padding: 1.75rem; }
+      .gap-8 { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars-bg">
+    <div class="stars-layer" id="stars"></div>
+  </div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="https://avatars.githubusercontent.com/recobalt" alt="avatar" class="w-10 h-10 rounded-full border-2 border-emerald-500/50 group-hover:scale-110 transition-transform duration-300">
+        <span class="font-bold text-2xl tracking-tighter text-emerald-300">recobalt</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-10">
+        <div class="flex gap-8 text-base font-medium">
+          <a href="index.html" class="hover:text-emerald-400 transition-colors" data-ru="Главная" data-en="Home">Главная</a>
+          <a href="#" class="text-emerald-400" data-ru="Проекты" data-en="Projects">Проекты</a>
+          <a href="index.html#contact" class="hover:text-emerald-400 transition-colors" data-ru="Контакты" data-en="Contact">Контакты</a>
+        </div>
+
+        <div class="flex gap-1 text-sm font-medium glass rounded-2xl p-1">
+          <button data-lang="ru" class="lang-btn px-5 py-2 rounded-xl active bg-emerald-500/20 text-emerald-300">RU</button>
+          <button data-lang="en" class="lang-btn px-5 py-2 rounded-xl">EN</button>
+        </div>
+      </div>
+
+      <button id="menu-btn" class="md:hidden text-3xl text-emerald-300 hover:text-emerald-400 transition">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden glass border-t border-zinc-800/60 max-h-0 overflow-hidden opacity-0">
+      <div class="px-6 py-10 flex flex-col gap-7 text-lg font-medium">
+        <a href="index.html" class="hover:text-emerald-400 transition" data-ru="Главная" data-en="Home">Главная</a>
+        <a href="#" class="text-emerald-400" data-ru="Проекты" data-en="Projects">Проекты</a>
+        <a href="index.html#contact" class="hover:text-emerald-400 transition" data-ru="Контакты" data-en="Contact">Контакты</a>
+
+        <div class="flex gap-5 pt-5 border-t border-zinc-800/60">
+          <button data-lang="ru" class="lang-btn px-6 py-2.5 glass rounded-xl active bg-emerald-500/20 text-emerald-300">RU</button>
+          <button data-lang="en" class="lang-btn px-6 py-2.5 glass rounded-xl">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-28 pb-24">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
+      <h1 class="text-5xl sm:text-6xl font-bold mb-5 fade-in text-center md:text-left text-white" data-ru="Мои проекты" data-en="My projects">Мои проекты</h1>
+      <p class="text-xl sm:text-2xl text-zinc-400 mb-16 fade-in text-center md:text-left" data-ru="Практичные инструменты и автоматизация" data-en="Practical tools and automation">
+        Практичные инструменты и автоматизация
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+        <div class="glass rounded-3xl p-6 sm:p-8 fade-in glow-hover">
+          <div class="flex justify-between items-start mb-5">
+            <span class="text-emerald-400 text-sm font-mono">Python</span>
+            <span class="text-xs bg-zinc-800/80 px-3 py-1 rounded-full">1 ★</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-white">fakegenerator</h3>
+          <p class="text-zinc-300 mb-6 text-sm sm:text-base">
+            Генератор реалистичных фейковых персональных данных: ФИО, адреса, телефоны, email, паспорт, ИНН, СНИЛС, банковские карты и многое другое. Идеально для тестирования форм, баз данных и API.
+          </p>
+          <a href="https://github.com/recobalt/fakegenerator" target="_blank" class="text-emerald-400 hover:underline text-sm sm:text-base">GitHub →</a>
+        </div>
+
+        <div class="glass rounded-3xl p-6 sm:p-8 fade-in glow-hover">
+          <div class="flex justify-between items-start mb-5">
+            <span class="text-emerald-400 text-sm font-mono">Python • Crypto</span>
+            <span class="text-xs bg-zinc-800/80 px-3 py-1 rounded-full">1 ★</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-white">privatechat</h3>
+          <p class="text-zinc-300 mb-6 text-sm sm:text-base">
+            Простой, но безопасный зашифрованный чат на Fernet (AES + HMAC). Есть готовый сервер и клиент. Подходит для приватного общения в локальной сети или через туннель.
+          </p>
+          <a href="https://github.com/recobalt/privatechat" target="_blank" class="text-emerald-400 hover:underline text-sm sm:text-base">GitHub →</a>
+        </div>
+
+        <div class="glass rounded-3xl p-6 sm:p-8 fade-in glow-hover">
+          <div class="flex justify-between items-start mb-5">
+            <span class="text-emerald-400 text-sm font-mono">Python</span>
+            <span class="text-xs bg-zinc-800/80 px-3 py-1 rounded-full">2 ★</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-white">WildberriesDelivery</h3>
+          <p class="text-zinc-300 mb-6 text-sm sm:text-base">
+            Автоматизация отслеживания и обработки заказов / доставок на Wildberries. Парсит статусы, отправляет уведомления в Telegram, может автоматически подтверждать получение или возвраты.
+          </p>
+          <a href="https://github.com/recobalt/WildberriesDelivery" target="_blank" class="text-emerald-400 hover:underline text-sm sm:text-base">GitHub →</a>
+        </div>
+
+        <div class="glass rounded-3xl p-6 sm:p-8 fade-in glow-hover">
+          <div class="flex justify-between items-start mb-5">
+            <span class="text-emerald-400 text-sm font-mono">Python</span>
+            <span class="text-xs bg-zinc-800/80 px-3 py-1 rounded-full">2 ★</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-white">BlumDev</h3>
+          <p class="text-zinc-300 mb-6 text-sm sm:text-base">
+            Набор инструментов и скриптов для автоматизации Blum (включая основной скрипт и remover). Всё собрано в одном удобном репозитории.
+          </p>
+          <a href="https://github.com/recobalt/BlumDev" target="_blank" class="text-emerald-400 hover:underline text-sm sm:text-base">GitHub →</a>
+        </div>
+
+        <div class="glass rounded-3xl p-6 sm:p-8 fade-in glow-hover">
+          <div class="flex justify-between items-start mb-5">
+            <span class="text-emerald-400 text-sm font-mono">Python</span>
+            <span class="text-xs bg-zinc-800/80 px-3 py-1 rounded-full">1 ★</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-white">BlumAutoFarm</h3>
+          <p class="text-zinc-300 mb-6 text-sm sm:text-base">
+            Лёгкий и стабильный авто-фармер наград в Blum. Автоматически кликает по кнопкам claim / continue / start.
+          </p>
+          <a href="https://github.com/recobalt/BlumAutoFarm" target="_blank" class="text-emerald-400 hover:underline text-sm sm:text-base">GitHub →</a>
+        </div>
+
+        <div class="glass rounded-3xl p-6 sm:p-8 fade-in glow-hover">
+          <div class="flex justify-between items-start mb-5">
+            <span class="text-emerald-400 text-sm font-mono">Python • Fun</span>
+            <span class="text-xs bg-zinc-800/80 px-3 py-1 rounded-full">0 ★</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-white">Dimon-Joke</h3>
+          <p class="text-zinc-300 mb-6 text-sm sm:text-base">
+            Шуточный троллинг-скрипт: меняет обои на мем с «Димоном», включает громкий звук и пугает друзей.
+          </p>
+          <a href="https://github.com/recobalt/Dimon-Joke" target="_blank" class="text-emerald-400 hover:underline text-sm sm:text-base">GitHub →</a>
+        </div>
+
+        <div class="glass rounded-3xl p-6 sm:p-8 fade-in glow-hover">
+          <div class="flex justify-between items-start mb-5">
+            <span class="text-emerald-400 text-sm font-mono">Python • Telegram</span>
+            <span class="text-xs bg-zinc-800/80 px-3 py-1 rounded-full">0 ★</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-white">GiftChecker</h3>
+          <p class="text-zinc-300 mb-6 text-sm sm:text-base">
+            Автоматическая проверка подарочных кодов / промокодов (Steam, Wildberries и др.) с заданным интервалом через Telegram-бот и API.
+          </p>
+          <a href="https://github.com/recobalt/GiftChecker" target="_blank" class="text-emerald-400 hover:underline text-sm sm:text-base">GitHub →</a>
+        </div>
+
+        <div class="glass rounded-3xl p-6 sm:p-8 fade-in glow-hover">
+          <div class="flex justify-between items-start mb-5">
+            <span class="text-emerald-400 text-sm font-mono">Python • Module</span>
+            <span class="text-xs bg-zinc-800/80 px-3 py-1 rounded-full">0 ★</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3 text-white">autoupdate</h3>
+          <p class="text-zinc-300 mb-6 text-sm sm:text-base">
+            Универсальный модуль автоматического обновления. Можно внедрить в любой свой скрипт — сам проверяет наличие обновлений и обновляется.
+          </p>
+          <a href="https://github.com/recobalt/autoupdate" target="_blank" class="text-emerald-400 hover:underline text-sm sm:text-base">GitHub →</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-12 text-center text-zinc-500 border-t border-zinc-800/40 text-sm">
+    <p>© 2026 Egor • recobalt</p>
+  </footer>
+
+  <script>
+    // Звёзды
+    function createStars() {
+      const container = document.getElementById('stars');
+      for (let i = 0; i < 220; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.width = star.style.height = Math.random() * 2.2 + 0.7 + 'px';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 6 + 's';
+        container.appendChild(star);
+      }
+      setInterval(() => {
+        const shooting = document.createElement('div');
+        shooting.className = 'shooting-star';
+        shooting.style.left = Math.random() * 100 + '%';
+        shooting.style.top = '-100px';
+        shooting.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        container.appendChild(shooting);
+        setTimeout(() => shooting.remove(), 10000);
+      }, 2200);
+    }
+    createStars();
+
+    // Мобильное меню
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+      if (!menu.classList.contains('hidden')) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+      } else {
+        menu.style.maxHeight = '0';
+        menu.style.opacity = '0';
+      }
+    });
+
+    // Fade-in
+    document.querySelectorAll('.fade-in').forEach(el => {
+      new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) el.classList.add('visible');
+      }, { threshold: 0.12 }).observe(el);
+    });
+
+    // Смена языка
+    const langButtons = document.querySelectorAll('[data-lang]');
+    const translatable = document.querySelectorAll('[data-ru][data-en]');
+
+    function setLanguage(lang) {
+      localStorage.setItem('lang', lang);
+      langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+      translatable.forEach(el => el.textContent = el.dataset[lang]);
+      document.documentElement.lang = lang;
+    }
+
+    const savedLang = localStorage.getItem('lang') || 'ru';
+    setLanguage(savedLang);
+
+    langButtons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+  </script>
+</body>
+</html>

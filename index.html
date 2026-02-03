@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>recobalt • Egor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #05050a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .stars-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      background: radial-gradient(circle at 50% 50%, #0a0a1f 0%, #000 75%);
+    }
+
+    .stars-layer {
+      position: absolute;
+      inset: 0;
+    }
+
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #fff;
+      opacity: 0.6;
+      animation: twinkle 5s infinite alternate ease-in-out;
+    }
+
+    .shooting-star {
+      position: absolute;
+      width: 2px;
+      height: 100px;
+      background: linear-gradient(transparent, rgba(165, 243, 252, 0.9), transparent);
+      transform: rotate(25deg);
+      animation: fall 6s linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.4; transform: scale(0.8); }
+      50% { opacity: 0.95; transform: scale(1.15); }
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-150px) rotate(25deg); opacity: 0; }
+      10% { opacity: 0.8; }
+      100% { transform: translateY(120vh) rotate(25deg); opacity: 0; }
+    }
+
+    .glass {
+      background: rgba(18, 18, 35, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .glow-hover:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px -15px rgba(16,185,129,0.35);
+      border-color: rgba(16,185,129,0.5);
+    }
+
+    #mobile-menu {
+      transition: all 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 3.4rem; line-height: 1.05; }
+      h2 { font-size: 2.4rem; }
+      .text-xl { font-size: 1.125rem; }
+      .p-8 { padding: 1.75rem; }
+      .gap-8 { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars-bg">
+    <div class="stars-layer" id="stars"></div>
+  </div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="https://avatars.githubusercontent.com/recobalt" alt="avatar" class="w-10 h-10 rounded-full border-2 border-emerald-500/50 group-hover:scale-110 transition-transform duration-300">
+        <span class="font-bold text-2xl tracking-tighter text-emerald-300">recobalt</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-10">
+        <div class="flex gap-8 text-base font-medium">
+          <a href="#about" class="hover:text-emerald-400 transition-colors" data-ru="Обо мне" data-en="About me">Обо мне</a>
+          <a href="projects.html" class="hover:text-emerald-400 transition-colors" data-ru="Проекты" data-en="Projects">Проекты</a>
+          <a href="#contact" class="hover:text-emerald-400 transition-colors" data-ru="Контакты" data-en="Contact">Контакты</a>
+        </div>
+
+        <div class="flex gap-1 text-sm font-medium glass rounded-2xl p-1">
+          <button data-lang="ru" class="lang-btn px-5 py-2 rounded-xl active bg-emerald-500/20 text-emerald-300">RU</button>
+          <button data-lang="en" class="lang-btn px-5 py-2 rounded-xl">EN</button>
+        </div>
+      </div>
+
+      <button id="menu-btn" class="md:hidden text-3xl text-emerald-300 hover:text-emerald-400 transition">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden glass border-t border-zinc-800/60 max-h-0 overflow-hidden opacity-0">
+      <div class="px-6 py-10 flex flex-col gap-7 text-lg font-medium">
+        <a href="#about" class="hover:text-emerald-400 transition" data-ru="Обо мне" data-en="About me">Обо мне</a>
+        <a href="projects.html" class="hover:text-emerald-400 transition" data-ru="Проекты" data-en="Projects">Проекты</a>
+        <a href="#contact" class="hover:text-emerald-400 transition" data-ru="Контакты" data-en="Contact">Контакты</a>
+
+        <div class="flex gap-5 pt-5 border-t border-zinc-800/60">
+          <button data-lang="ru" class="lang-btn px-6 py-2.5 glass rounded-xl active bg-emerald-500/20 text-emerald-300">RU</button>
+          <button data-lang="en" class="lang-btn px-6 py-2.5 glass rounded-xl">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="min-h-screen flex items-center pt-28 pb-16 sm:pb-24">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 grid md:grid-cols-2 gap-12 md:gap-16 items-center relative z-10">
+      <div class="fade-in text-center md:text-left">
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter mb-3 text-white" data-ru="привет, я recobalt" data-en="hey, I'm recobalt">
+          привет, я recobalt
+        </h1>
+        <p class="text-4xl sm:text-5xl font-medium text-emerald-400 mb-8" data-ru="Егор" data-en="Egor">Егор</p>
+
+        <p class="text-lg sm:text-xl text-zinc-300 max-w-xl mx-auto md:mx-0 leading-relaxed mb-12" data-ru="Python-разработчик. Создаю инструменты, которые экономят время, автоматизируют рутину и решают реальные задачи. Работаю с VPN, базами данных, немного Golang и Flutter." data-en="Python developer. Building tools that save time, automate routine tasks and solve real problems. Working with VPNs, databases, a bit of Golang and Flutter.">
+          Python-разработчик. Создаю инструменты, которые экономят время, автоматизируют рутину и решают реальные задачи. Работаю с VPN, базами данных, немного Golang и Flutter.
+        </p>
+
+        <div class="flex flex-wrap justify-center md:justify-start gap-6">
+          <a href="https://github.com/recobalt" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold rounded-2xl transition-all duration-300 shadow-xl shadow-emerald-900/30 text-lg">
+            <i class="fab fa-github text-2xl"></i>
+            GitHub
+          </a>
+          <a href="projects.html" class="inline-flex items-center gap-3 px-8 py-4 glass hover:border-emerald-500/50 font-semibold rounded-2xl transition-all duration-300 text-lg">
+            <span data-ru="Посмотреть проекты" data-en="View projects">Посмотреть проекты</span>
+            →
+          </a>
+        </div>
+      </div>
+
+      <div class="fade-in flex justify-center">
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/15 to-teal-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+          <img src="https://avatars.githubusercontent.com/recobalt" alt="Egor" class="w-72 sm:w-80 md:w-96 rounded-3xl border-8 border-zinc-800/70 relative z-10 shadow-2xl">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-24 sm:py-32 border-t border-zinc-800/40">
+    <div class="max-w-5xl mx-auto px-5 sm:px-6">
+      <h2 class="text-5xl font-bold mb-12 fade-in text-center md:text-left text-white" data-ru="Обо мне" data-en="About me">Обо мне</h2>
+      <div class="glass rounded-3xl p-8 sm:p-12 fade-in prose prose-invert prose-lg max-w-none space-y-7">
+        <p class="text-xl leading-relaxed" data-ru="Привет! Я Егор, на GitHub — recobalt." data-en="Hi! I'm Egor, on GitHub — recobalt.">
+          Привет! Я Егор, на GitHub — recobalt.
+        </p>
+        <p class="leading-relaxed" data-ru="Несколько лет занимаюсь разработкой на Python. Основной фокус — практичные инструменты, которые реально упрощают жизнь: автоматизация процессов, парсинг данных, генерация тестовых наборов, работа с API." data-en="Been working with Python for several years. Main focus — practical tools that really make life easier: process automation, data parsing, test data generation, API work.">
+          Несколько лет занимаюсь разработкой на Python. Основной фокус — практичные инструменты, которые реально упрощают жизнь: автоматизация процессов, парсинг данных, генерация тестовых наборов, работа с API.
+        </p>
+        <p class="leading-relaxed" data-ru="Также работаю с VPN и сетевыми протоколами, базами данных (Firebase, MySQL, SQLite), немного Golang и Flutter. Стремлюсь к чистому, читаемому и поддерживаемому коду." data-en="Also working with VPNs and network protocols, databases (Firebase, MySQL, SQLite), a bit of Golang and Flutter. Striving for clean, readable and maintainable code.">
+          Также работаю с VPN и сетевыми протоколами, базами данных (Firebase, MySQL, SQLite), немного Golang и Flutter. Стремлюсь к чистому, читаемому и поддерживаемому коду.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 sm:py-32 border-t border-zinc-800/40">
+    <div class="max-w-5xl mx-auto px-5 sm:px-6 text-center fade-in">
+      <h2 class="text-5xl font-bold mb-8 text-white" data-ru="Готов к сотрудничеству" data-en="Ready to collaborate">
+        Готов к сотрудничеству
+      </h2>
+      <p class="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto" data-ru="Открыт к интересным задачам, идеям, совместным проектам" data-en="Open to interesting tasks, ideas and joint projects">
+        Открыт к интересным задачам, идеям, совместным проектам
+      </p>
+      <a href="https://github.com/recobalt" target="_blank" class="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xl rounded-3xl transition-all duration-300 shadow-2xl shadow-emerald-900/40">
+        <i class="fab fa-github text-4xl"></i>
+        <span data-ru="Написать мне" data-en="Message me">Написать мне</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="py-12 text-center text-zinc-500 border-t border-zinc-800/40 text-sm">
+    <p>© 2026 Egor • recobalt</p>
+  </footer>
+
+  <script>
+    // Генерация звёзд
+    function createStars() {
+      const container = document.getElementById('stars');
+      for (let i = 0; i < 250; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.width = star.style.height = Math.random() * 2.5 + 0.8 + 'px';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 6 + 's';
+        container.appendChild(star);
+      }
+      setInterval(() => {
+        const shooting = document.createElement('div');
+        shooting.className = 'shooting-star';
+        shooting.style.left = Math.random() * 100 + '%';
+        shooting.style.top = '-100px';
+        shooting.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        container.appendChild(shooting);
+        setTimeout(() => shooting.remove(), 10000);
+      }, 2200);
+    }
+    createStars();
+
+    // Мобильное меню
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+      if (!menu.classList.contains('hidden')) {
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+      } else {
+        menu.style.maxHeight = '0';
+        menu.style.opacity = '0';
+      }
+    });
+
+    // Fade-in
+    document.querySelectorAll('.fade-in').forEach(el => {
+      new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) el.classList.add('visible');
+      }, { threshold: 0.15 }).observe(el);
+    });
+
+    // Смена языка
+    const langButtons = document.querySelectorAll('[data-lang]');
+    const translatable = document.querySelectorAll('[data-ru][data-en]');
+
+    function setLanguage(lang) {
+      localStorage.setItem('lang', lang);
+      langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+      translatable.forEach(el => el.textContent = el.dataset[lang]);
+      document.documentElement.lang = lang;
+    }
+
+    const savedLang = localStorage.getItem('lang') || 'ru';
+    setLanguage(savedLang);
+
+    langButtons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+  </script>
+</body>
+</html>
