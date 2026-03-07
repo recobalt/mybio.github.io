@@ -7,6 +7,6 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/2048px-Telegram_2019_Logo.svg.png" width="40">
 </a>
 
-<a href="https://recobalt.mooo.com/">
-  <img src="https://img.icons8.com/ios-filled/100/domain.png" width="40">
+<a href="https://recobalt.mooo.com/" style="margin-left:18px;">
+  <img src="https://img.icons8.com/ios-glyphs/90/ffffff/internet.png" width="40">
 </a>
